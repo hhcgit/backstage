@@ -118,6 +118,7 @@ export function registerMigrateCommand(program: CommanderStatic) {
 }
 
 export function registerCommands(program: CommanderStatic) {
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('app:build')
     .description('Build an app for a production release')
@@ -129,6 +130,7 @@ export function registerCommands(program: CommanderStatic) {
     .option(...configOption)
     .action(lazy(() => import('./app/build').then(m => m.default)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('app:serve')
     .description('Serve an app for local development')
@@ -136,6 +138,7 @@ export function registerCommands(program: CommanderStatic) {
     .option(...configOption)
     .action(lazy(() => import('./app/serve').then(m => m.default)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('backend:build')
     .description('Build a backend plugin')
@@ -143,6 +146,7 @@ export function registerCommands(program: CommanderStatic) {
     .option('--experimental-type-build', 'Enable experimental type build')
     .action(lazy(() => import('./backend/build').then(m => m.default)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('backend:bundle')
     .description('Bundle the backend into a deployment archive')
@@ -152,6 +156,7 @@ export function registerCommands(program: CommanderStatic) {
     )
     .action(lazy(() => import('./backend/bundle').then(m => m.default)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('backend:dev')
     .description('Start local development server with HMR for the backend')
@@ -207,6 +212,7 @@ export function registerCommands(program: CommanderStatic) {
       lazy(() => import('./remove-plugin/removePlugin').then(m => m.default)),
     );
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('plugin:build')
     .description('Build a plugin')
@@ -214,6 +220,7 @@ export function registerCommands(program: CommanderStatic) {
     .option('--experimental-type-build', 'Enable experimental type build')
     .action(lazy(() => import('./plugin/build').then(m => m.default)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('plugin:serve')
     .description('Serves the dev/ folder of a plugin')
@@ -228,6 +235,7 @@ export function registerCommands(program: CommanderStatic) {
     .description('Diff an existing plugin with the creation template')
     .action(lazy(() => import('./plugin/diff').then(m => m.default)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('build')
     .description('Build a package for publishing')
@@ -236,6 +244,7 @@ export function registerCommands(program: CommanderStatic) {
     .option('--experimental-type-build', 'Enable experimental type build')
     .action(lazy(() => import('./oldBuild').then(m => m.default)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('lint')
     .option(
@@ -247,6 +256,7 @@ export function registerCommands(program: CommanderStatic) {
     .description('Lint a package')
     .action(lazy(() => import('./lint').then(m => m.default)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('test')
     .allowUnknownOption(true) // Allows the command to run, but we still need to parse raw args
@@ -326,16 +336,19 @@ export function registerCommands(program: CommanderStatic) {
     .description('Check Backstage package versioning')
     .action(lazy(() => import('./versions/lint').then(m => m.default)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('prepack')
     .description('Prepares a package for packaging before publishing')
     .action(lazy(() => import('./pack').then(m => m.pre)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('postpack')
     .description('Restores the changes made by the prepack command')
     .action(lazy(() => import('./pack').then(m => m.post)));
 
+  // TODO(Rugvip): Deprecate in favor of script variant
   program
     .command('clean')
     .description('Delete cache directories')
